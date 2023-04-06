@@ -338,14 +338,16 @@ public class ChunkManager {
                         continue;
                     }
 
-                    if (ConfigManager.getInstance().getFluidsProtectIndestructibles() && !detonatorLoc.getBlock().isLiquid()
-                            && MaterialManager.getInstance().contains(targetLoc.getBlock().getType().name(), targetLoc.getBlock().getData())) {
-                        if (Util.isNearLiquid(targetLoc) && distance > 1) {
-                            blocksIgnored.add(targetLoc.getBlock());
-                            blocksDestroyed.remove(targetLoc.getBlock());
-                            continue;
-                        }
-                    }
+                    // NOTE: Disabling this fixes LCB-2663 (https://www.youtube.com/watch?v=pYHeX9HDbG4)
+                    //
+                    // if (ConfigManager.getInstance().getFluidsProtectIndestructibles() && !detonatorLoc.getBlock().isLiquid()
+                    //         && MaterialManager.getInstance().contains(targetLoc.getBlock().getType().name(), targetLoc.getBlock().getData())) {
+                    //     if (Util.isNearLiquid(targetLoc) && distance > 1) {
+                    //         blocksIgnored.add(targetLoc.getBlock());
+                    //         blocksDestroyed.remove(targetLoc.getBlock());
+                    //         continue;
+                    //     }
+                    // }
 
                     // Liquid overrides
                     if (ConfigManager.getInstance().getBypassAllFluidProtection() || detectedSand) {
