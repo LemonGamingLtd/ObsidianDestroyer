@@ -1389,7 +1389,7 @@ public class ChunkManager {
         final String key = chunkToString(chunk);
         final ChunkWrapper wrapper = chunks.get(key);
         if (wrapper != null) {
-            Bukkit.getScheduler().runTaskAsynchronously(ObsidianDestroyer.getInstance(), () -> wrapper.save(false, false));
+            wrapper.save(false, false);
             chunks.remove(key);
         }
     }
